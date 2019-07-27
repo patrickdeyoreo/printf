@@ -21,6 +21,6 @@ int print_s(va_list);
 int print_i(va_list);
 void _print_i(int n, int *count);
 int print_prcnt(va_list);
-int _printf(const char *format);
+int _printf(const char *format, ...);
 
 #endif /* HOLBERTON_H */
