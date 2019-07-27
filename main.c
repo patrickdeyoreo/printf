@@ -18,9 +18,11 @@ int main(void)
 	_printf("Hello %s!%s", "World", "\n");
 	_printf("---%s", "\n");
 	_printf("Length:[%d, %i]\n", len, len);
-	printf("Length:[%d, %i]\n", len2, len2);
+	_printf("Length:[%d, %i]\n", len2, len2);
+	_printf("Length:[%b]\n", len, len);
+	_printf("Length:[%b]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
-	 printf("Negative:[%d]\n", -762534);
+	_printf("Negative:[%b]\n", -762534);
 	/*
 	 * _printf("Unsigned:[%u]\n", ui);
 	 * printf("Unsigned:[%u]\n", ui);
