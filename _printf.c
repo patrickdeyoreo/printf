@@ -11,16 +11,11 @@
 int _printf(const char *format, ...)
 {
 	int (*print_func)(va_list);
-	t_print_func specs[] = {
-		{'c', print_c},
-		{'s', print_s},
-		{'%', print_prcnt},
-		{'\0', NULL}
-	};
 	va_list arguments;
-	int i, charCounter;
+	int charCounter;
 
 	va_start(arguments, format);
+	charCounter = 0;
 	while (*format)
 	{
 		if (*format != '%')
@@ -29,21 +24,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			/*
 			print_func = get_print_func(*(++format));
 			if (print_func)
 				charCounter += print_func(arguments);
 			else
-				return (charCounter);
-			*/
-			for (i = 0, format += 1; specs[i].specifier; i++)
-			{
-				if (specs[i].specifier == *format)
-				{
-					charCounter += specs[i].f(arguments);
-					break;
-				}
-			}
+				return (-1);
 		}
 		format++;
 	}
