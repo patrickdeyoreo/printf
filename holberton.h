@@ -2,6 +2,8 @@
 #define HOLBERTON_H
 
 #include <stdarg.h>
+#include <stdio.h>
+
 int _putchar(int c);
 
 /**
