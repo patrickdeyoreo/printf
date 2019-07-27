@@ -11,10 +11,10 @@
 int _printf(const char *format, ...)
 {
 	t_print_func specs[] = {
-		{"c", print_c},
-		{"s", print_s},
-		{"%", print_prcnt},
-		{NULL, NULL}
+		{'c', print_c},
+		{'s', print_s},
+		{'%', print_prcnt},
+		{'\0', NULL}
 	};
 	va_list arguments;
 	int i, charCounter;
@@ -30,9 +30,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			i = 0;
-			while (specs[i].spec)
+			while (specs[i].specifier)
 			{
-				if (*(specs[i]).spec == *(format++))
+				if (specs[i].specifier == *(format++))
 					charCounter += specs[i].f(arguments);
 				i++;
 			}
