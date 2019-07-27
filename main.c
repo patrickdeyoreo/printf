@@ -9,21 +9,19 @@
  */
 int main(void)
 {
+	int len;
+	int len2;
+	len = _printf("Let's try to printf a simple sentence.\n");
+	len2 = printf("Let's try to printf a simple sentence.\n");
+	_printf("%%%c", '\n');
+        _printf("---%s", "\n");
+	_printf("Hello %s!%s", "World", "\n");
+	_printf("---%s", "\n");
+	_printf("Length:[%d, %i]\n", len, len);
+	printf("Length:[%d, %i]\n", len2, len2);
+	_printf("Negative:[%d]\n", -762534);
+	 printf("Negative:[%d]\n", -762534);
 	/*
-	 * int len;
-	 * int len2;
-         *
-	 * len = _printf("Let's try to printf a simple sentence.\n");
-	 * len2 = printf("Let's try to printf a simple sentence.\n");
-	 */
-	_printf("%s---%s", "\n", "\n");
-	_printf("Hello, %s", "World!");
-	_printf("%s---%s", "\n", "\n");
-	/*
-	 * _printf("Length:[%d, %i]\n", len, len);
-	 * printf("Length:[%d, %i]\n", len2, len2);
-	 * _printf("Negative:[%d]\n", -762534);
-	 * printf("Negative:[%d]\n", -762534);
 	 * _printf("Unsigned:[%u]\n", ui);
 	 * printf("Unsigned:[%u]\n", ui);
 	 * _printf("Unsigned octal:[%o]\n", ui);
