@@ -26,7 +26,6 @@ int _printf(const char *format, ...)
 		{
 			_putchar(*format);
 			charCounter++;
-			format++;
 		}
 		else
 		{
@@ -38,6 +37,7 @@ int _printf(const char *format, ...)
 				i++;
 			}
 		}
+		format++;
 	}
 	va_end(arguments);
 	return (charCounter);
