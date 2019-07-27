@@ -8,8 +8,8 @@
  */
 void _print_b(unsigned int n, int *count)
 {
-	if (n > 2)
-		_print_b(n / 2, count);
+	if (n > 1)
+		_print_b(n >> 1, count);
 	*count += _putchar('0' + n % 2);
 }
 
