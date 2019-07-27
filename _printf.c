@@ -33,8 +33,9 @@ int _printf(const char *format, ...)
 			i = 0;
 			while (specs[i].spec)
 			{
-				if (*(specs[i]).spec == *(format + i + 1))
+				if (*(specs[i]).spec == *(format++))
 					charCounter += specs[i].f(arguments);
+				i++;
 			}
 		}
 	}
