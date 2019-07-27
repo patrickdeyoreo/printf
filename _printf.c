@@ -10,6 +10,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int (*print_func)(va_list);
 	t_print_func specs[] = {
 		{'c', print_c},
 		{'s', print_s},
@@ -24,17 +25,24 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			_putchar(*format);
-			charCounter++;
+			charCounter += _putchar(*format);
 		}
 		else
 		{
-			i = 0;
-			while (specs[i].specifier)
+			/*
+			print_func = get_print_func(*(++format));
+			if (print_func)
+				charCounter += print_func(arguments);
+			else
+				return (charCounter);
+			*/
+			for (i = 0, format += 1; specs[i].specifier; i++)
 			{
-				if (specs[i].specifier == *(format++))
+				if (specs[i].specifier == *format)
+				{
 					charCounter += specs[i].f(arguments);
-				i++;
+					break;
+				}
 			}
 		}
 		format++;
