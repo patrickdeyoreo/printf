@@ -2,6 +2,8 @@
 #define HOLBERTON_H
 
 #include <stdarg.h>
+#include <stdio.h>
+
 int _putchar(int c);
 
 /**
@@ -12,10 +14,10 @@ int _putchar(int c);
  */
 typedef struct print_func
 {
-	char *specifier;
+	char specifier;
 	int (*f)(va_list);
 } t_print_func;
-int (*get_print_func(char *c))(va_list);
+int (*get_print_func(char c))(va_list);
 int print_c(va_list);
 int print_s(va_list);
 int print_i(va_list);

@@ -6,7 +6,7 @@
  *
  * Return: the number of bytes printed
  */
-int print_prcnt(va_list args)
+int print_prcnt(va_list args __attribute__((unused)))
 {
 	return (_putchar('%'));
 }
