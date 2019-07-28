@@ -1,0 +1,15 @@
+.TH _PRINTF 3 "27 July 2019" "Printf Man Page"
+.SH NAME
+.B _printf
+- formats and writes data to stdout
+.SH SYNOPSIS
+.B _printf
+.I FORMAT [ARGUMENT]
+.B ...
+.SH DESCRIPTION
+Writes output using the format string to stdout. The format string is composed
+of 0 or more directives and contains specifiers (identified by the prefix "%")
+that use the corresponding argument variables to print desired data.
+.SH RETURN VALUE
+On success, returns the number of characters printed to stdout (excluding the
+null byte term). On failure, returns -1.
