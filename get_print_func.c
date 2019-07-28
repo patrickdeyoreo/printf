@@ -2,8 +2,8 @@
 
 /**
  * get_print_func - find print function relative to matching specifier
- *
  * @c: current specifier to compare
+ *
  * Return: Number of characters printed
  *
  */
