@@ -13,24 +13,25 @@ int _printf(const char *format, ...)
 	int (*print_func)(va_list);
 	va_list arguments;
 	int charCounter;
+	int last_ret_val;
 
 	va_start(arguments, format);
-	charCounter = 0;
-	while (*format)
+	for (charCounter = 0; *format; ++format)
 	{
-		if (*format != '%')
+		if (*format == '%')
 		{
-			charCounter += _putchar(*format);
-		}
-		else
-		{
-			print_func = get_print_func(*(++format));
+			print_func = get_print_func(format[1]);
 			if (print_func)
-				charCounter += print_func(arguments);
-			else
-				return (-1);
+			{
+				last_ret_val = print_func(arguments);
+				if (last_ret_val < 0)
+					return (last_ret_val);
+				charCounter += last_ret_val;
+				++format;
+				continue;
+			}
 		}
-		format++;
+		charCounter += _putchar(*format);
 	}
 	va_end(arguments);
 	return (charCounter);
