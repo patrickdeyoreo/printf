@@ -16,10 +16,10 @@ int (*get_print_func(char c))(va_list)
 		{'i', print_i},
 		{'d', print_i},
 		{'b', print_b},
-                {'u', print_u},
-                {'o', print_o},
-                {'x', print_x},
-                {'X', print_X},
+		{'u', print_u},
+		{'o', print_o},
+		{'x', print_x},
+		{'X', print_X},
 		{'\0', NULL}
 	};
 	int i;
