@@ -24,6 +24,14 @@ int print_i(va_list);
 void _print_i(int n, int *count);
 int print_b(va_list);
 void _print_b(unsigned int n, int *count);
+int print_u(va_list);
+void _print_u(unsigned int n, int *count);
+int print_o(va_list);
+void _print_o(unsigned int n, int *count);
+int print_x(va_list);
+void _print_x(unsigned int n, int *count);
+int print_X(va_list);
+void _print_X(unsigned int n, int *count);
 int print_prcnt(va_list);
 int _printf(const char *format, ...);
 
