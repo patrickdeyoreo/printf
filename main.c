@@ -22,6 +22,13 @@ int main(void)
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
 
+	_printf("Undefined int   :[%Q]\n", 762534);
+	printf("Undefined int   :[%Q]\n", 762534);
+	_printf("Undefined char  :[%Q]\n", 'A');
+	printf("Undefined char  :[%Q]\n", 'A');
+	_printf("Undefined string:[%Q]\n", "Hello");
+	printf("Undefined string:[%Q]\n", "Hello");
+
 	_printf("Unsigned:[%u]\n", ui);
 	printf("Unsigned:[%u]\n", ui);
 
