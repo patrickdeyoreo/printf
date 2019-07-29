@@ -8,7 +8,7 @@
  */
 int print_rot13(va_list args)
 {
-	int count = 0, i, j;
+	int count = 0, i, j, bool;
 	char set[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char enc[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *s = va_arg(args, char *);
@@ -19,8 +19,11 @@ int print_rot13(va_list args)
 			if (s[i] == set[j])
 			{
 				count += _putchar(enc[j]);
-				break;
+				bool = 0;
 			}
+		if (bool == 1)
+			count += _putchar(s[i]);
+		bool = 1;
 	}
 	return (count);
 }
