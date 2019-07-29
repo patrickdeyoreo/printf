@@ -11,12 +11,17 @@ int main(void)
 {
 	int len;
 	int len2;
+	int testy;
 	unsigned int ui = (unsigned int) INT_MAX + 1024;
+	int i = printf("%%%");
 
 	len  = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
+	testy = _printf("%r and Sudeep!\n", "Sudeep");
 
-	_printf("Length:[%d, %i]\n", len, len);
+	_printf("Length:[%d, %i]\n", testy, testy);
+
+	_printf("Length:[%d, %i]\n", len);
 	printf("Length:[%d, %i]\n", len2, len2);
 
 	_printf("Negative:[%d]\n", -762534);
@@ -50,10 +55,8 @@ int main(void)
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
 
-	/*
-	 * _printf("Unknown:[%r]\n");
-	 * printf("Unknown:[%r]\n");
-	 */
-
+	/*printf(".%r\n");*/
+	printf("%%% , number of chars printed: [%i]\n", i);
+        printf("%%%\n");
 	return (0);
 }
