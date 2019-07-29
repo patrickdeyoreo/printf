@@ -5,12 +5,18 @@ stream. The function returns the number of characters printed.
 ## Current Conversion Specifiers
 | Specifier | Description |
 | --------  | ----------- |
-| %c | character |
-| %s | a string of characters |
-| %% | % character exclusively |
-| %d | signed decimal numbers (base 10 integers) |
-| %i | signed integers (base 10) |
-| %b | binary conversion of an unsigned integer |
+| %c | writes a single character |
+| %s | writes a character string |
+| %% | writes the literal % |
+| %d | writes the decimal form a signed integer |
+| %i | writes the decimal form a signed integer |
+| %u | writes the decimal form of an unsigned integer |
+| %b | writes the binary form of an unsigned integer |
+| %o | writes the octal form of an unsigned integer |
+| %x | writes the hexadecimal form of an unsigned integer (using conversion letters: abcdef) |
+| %X | writes the hexadecimal form of an unsigned integer (using conversion letters: ABCDEF) |
+| %r |  writes a character string in reverse order |
+| %R | encodes a character string in rot13 format |
 ## Example Test
 ```
  int main(void)
