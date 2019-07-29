@@ -36,4 +36,5 @@ int print_prcnt(va_list);
 void _print_rev(char *s, int *count);
 int print_rev(va_list);
 int _printf(const char *format, ...);
+
 #endif /* HOLBERTON_H */
