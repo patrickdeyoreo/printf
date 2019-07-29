@@ -23,9 +23,12 @@ stream. The function returns the number of characters printed.
 | %R | encodes a character string in rot13 format |
 
 ## Functions
-* **get_print_func.** - Gives the appropriate print function if passed a valid specifier
-* **_putchar.c** - writes a character to stdout and returns an integer that is used by _printf to accumulate how many characters have been printed
-* **print_*.c** - A group of functions that take care of the relative specifier conversion
+* **get_print_func.c**
+> Gives the appropriate print function if passed a valid specifier
+* **_putchar.c**
+> writes a character to stdout and returns an integer that is used by _printf to accumulate how many characters have been printed
+* **print_*.c**
+> A group of functions that take care of the relative specifier conversion
 
 ## Compilation
 ```
