@@ -1,10 +1,9 @@
 #include "holberton.h"
 
 /**
- * _printf - take format string and print each arg
- * according to specs encountered
+ * _printf - print data to stdout
+ *@format: string with literals and directives
  *
- * @format: string with literals and directives
  * Return: Number of characters printed
  *
  */
