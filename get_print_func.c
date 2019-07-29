@@ -20,6 +20,7 @@ int (*get_print_func(char c))(va_list)
 		{'x', print_x},
 		{'X', print_X},
 		{'r', print_rev},
+		{'R', print_rot13},
 		{ 0, NULL}
 	};
 	unsigned int i = 0;
