@@ -24,6 +24,8 @@ int _printf(const char *format, ...)
 				++format;
 				continue;
 			}
+			if (!format[1])
+				continue;
 		}
 		charCounter += _putchar(*format);
 	}
