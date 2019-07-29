@@ -2,7 +2,7 @@
 
 /**
  * _print_rev - print a string in reverse
- * @n: the string to print
+ * @s: the string to print
  * @count: a pointer to a counter for the number of bytes printed
  */
 void _print_rev(char *s, int *count)
@@ -25,5 +25,5 @@ int print_rev(va_list args)
 
 	_print_rev(va_arg(args, char *), &count);
 
-	return count;
+	return (count);
 }
