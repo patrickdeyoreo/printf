@@ -10,25 +10,42 @@ int _printf(const char *format, ...)
 {
 	va_list arguments;
 	int (*print_func)(va_list);
-	int charCounter;
+	int charCounter, lastRetVal;
+
+	if (!format)
+		return (0);
 
 	va_start(arguments, format);
 	for (charCounter = 0; *format; ++format)
 	{
 		if (*format == '%')
 		{
+			if (!format[1])
+				continue;
+
 			print_func = get_print_func(format[1]);
 			if (print_func)
 			{
-				charCounter += print_func(arguments);
+				lastRetVal = print_func(arguments);
+				if (lastRetVal < 0)
+					return (-1);
+				charCounter += lastRetVal;
 				++format;
 				continue;
 			}
-			if (!format[1])
-				continue;
+
+			lastRetVal = _putchar(*format++);
+			if (lastRetVal < 0)
+				return (-1);
+			charCounter += lastRetVal;
 		}
-		charCounter += _putchar(*format);
+
+		lastRetVal = _putchar(*format);
+		if (lastRetVal < 0)
+			return (-1);
+		charCounter += lastRetVal;
 	}
 	va_end(arguments);
+
 	return (charCounter);
 }
