@@ -1,7 +1,11 @@
 # _printf
-This is a working printf clone called "_printf". It takes a format string
+This is a working printf customized clone called "_printf". It takes a format string
 (that can include 0 or more directives) and writes it to the standard output
 stream. The function returns the number of characters printed.
+
+## Synopsis
+**Prototype**: int _printf(const char *format, ...)
+
 ## Current Conversion Specifiers
 | Specifier | Description |
 | --------  | ----------- |
@@ -17,15 +21,33 @@ stream. The function returns the number of characters printed.
 | %X | writes the hexadecimal form of an unsigned integer (using conversion letters: ABCDEF) |
 | %r |  writes a character string in reverse order |
 | %R | encodes a character string in rot13 format |
+
+## Compilation
+```
+$ gcc -Wall -Werror -Wextra -pedantic *.c
+```
+
 ## Example Test
 ```
  int main(void)
  {
-    int len;
+    #include "holberton.h"
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    _printf("Length:[%d, %i]\n", len, len);
-    _printf("Negative:[%d]\n", -762534);
+    char c = 'C';
+    char *str = "Hello";
+    int num = 5;
+
+    /* "Print the character c" */
+    _printf("Print the character %c", c);
+
+    /* "Print the string Hello" */
+    _printf("Print the string %s", str);
+
+    /* "Print a % sign" */
+    _printf("Print a %% sign");
+
+    /* "Print the number 5 since number 5 is great" */
+    _printf("Print the number %i since number %d is great", num, num);
  }
 ```
 ## References
