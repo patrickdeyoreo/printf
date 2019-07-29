@@ -5,7 +5,6 @@
  * @c: current specifier to compare
  *
  * Return: Number of characters printed
- *
  */
 int (*get_print_func(char c))(va_list)
 {
