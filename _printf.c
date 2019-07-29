@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int charCounter, lastRetVal;
 
 	if (!format)
-		return (0);
+		return (-1);
 
 	va_start(arguments, format);
 	for (charCounter = 0; *format; ++format)

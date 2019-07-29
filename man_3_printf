@@ -56,8 +56,13 @@ To print some text alongside a
 string variable and an
 .I age
 integer variable:
-.TP
-_printf("Hello my name is %s and I am %i years old", name, age)
+.PP
+.nf
+.RS
+_printf("Hello my name is %s and I am %i years old", name, age);
+.RE
+.fi
+.PP
 .SH SEE ALSO
 .I printf(3)
 .SH BUGS
