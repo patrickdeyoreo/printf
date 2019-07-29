@@ -8,12 +8,23 @@
  */
 void _print_x(unsigned int n, int *count)
 {
+	int lastRetVal;
+
 	if (n > 0xf)
 		_print_x(n >> 4, count);
+
+	if (*count < 0)
+		return;
+
 	if ((n & 0xf) < 0xa)
-		*count += _putchar('0' + (n & 0xf));
+		lastRetVal = _putchar('0' + (n & 0xf));
 	else
-		*count += _putchar('a' + (n & 0xf) % 0xa);
+		lastRetVal = _putchar('a' + (n & 0xf) % 0xa);
+
+	if (lastRetVal < 0)
+		*count = (-1);
+	else
+		*count += lastRetVal;
 }
 
 

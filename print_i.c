@@ -8,19 +8,38 @@
  */
 void _print_i(int n, int *count)
 {
-	if (n > -1)
+	int lastRetVal;
+
+	if (n < 0)
 	{
-		if (n > 9)
-			_print_i(n / 10, count);
-		*count += _putchar('0' + n % 10);
+		*count = _putchar('-');
+
+		if (*count < 0)
+			return;
+
+		if (n < -9)
+			_print_i(n / -10, count);
+
+		if (*count < 0)
+			return;
+
+		lastRetVal = _putchar('0' - n % 10);
 	}
 	else
 	{
-		*count += _putchar('-');
-		if (n < -9)
-			_print_i(n / -10, count);
-		*count += _putchar('0' - n % 10);
+		if (n > 9)
+			_print_i(n / 10, count);
+
+		if (*count < 0)
+			return;
+
+		lastRetVal = _putchar('0' + n % 10);
 	}
+
+	if (lastRetVal < 0)
+		*count = (-1);
+	else
+		*count += lastRetVal;
 }
 
 

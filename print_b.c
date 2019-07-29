@@ -8,9 +8,20 @@
  */
 void _print_b(unsigned int n, int *count)
 {
+	int lastRetVal;
+
 	if (n > 1)
 		_print_b(n >> 1, count);
-	*count += _putchar('0' + n % 2);
+
+	if (*count < 0)
+		return;
+
+	lastRetVal = _putchar('0' + n % 2);
+
+	if (lastRetVal < 0)
+		*count = (-1);
+	else
+		*count += lastRetVal;
 }
 
 
