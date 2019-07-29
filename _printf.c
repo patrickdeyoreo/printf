@@ -2,9 +2,10 @@
 
 /**
  * _printf - print arguments according to a format
- * @format: string with literals and directives
+ * @format: a string composed of ordinary characters and format specifications
  *
- * Return: Number of characters printed
+ * Return: Upon success, this returns the number of characters printed.
+ * If an output error is encountered, -1 is returned instead.
  */
 int _printf(const char *format, ...)
 {
@@ -13,7 +14,7 @@ int _printf(const char *format, ...)
 	int charCounter, lastRetVal;
 
 	if (!format)
-		return (0);
+		return (-1);
 
 	va_start(arguments, format);
 	for (charCounter = 0; *format; ++format)
@@ -33,19 +34,16 @@ int _printf(const char *format, ...)
 				++format;
 				continue;
 			}
-
 			lastRetVal = _putchar(*format++);
 			if (lastRetVal < 0)
 				return (-1);
 			charCounter += lastRetVal;
 		}
-
 		lastRetVal = _putchar(*format);
 		if (lastRetVal < 0)
 			return (-1);
 		charCounter += lastRetVal;
 	}
 	va_end(arguments);
-
 	return (charCounter);
 }

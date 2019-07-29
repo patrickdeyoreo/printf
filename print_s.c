@@ -9,13 +9,12 @@
 int print_s(va_list args)
 {
 	int count = 0;
-	const char * const s = va_arg(args, const char * const);
+	char * s = va_arg(args, char *);
 
-	if (s)
-	{
-		while (s[count])
-			_putchar(s[count++]);
-	}
+	if (!s)
+		s = "(null)";
+	while (s[count])
+		_putchar(s[count++]);
 
 	return (count);
 }
