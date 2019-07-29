@@ -1,12 +1,10 @@
 #include "holberton.h"
 
 /**
- * _printf - take format string and print each arg
- * according to specs encountered
- *
+ * _printf - print arguments according to a format
  * @format: string with literals and directives
- * Return: Number of characters printed
  *
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
