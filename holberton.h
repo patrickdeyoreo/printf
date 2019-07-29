@@ -8,7 +8,6 @@ int _putchar(int c);
 
 /**
  * struct print_func - points to print functions relative to specifier
- *
  * @specifier: specifier format types
  * @f: functions that print specific format types
  */
