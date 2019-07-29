@@ -4,7 +4,7 @@ This is a working printf customized clone called "_printf". It takes a format st
 stream. The function returns the number of characters printed.
 
 ## Synopsis
-**int _printf(const char *format, ...)**
+**_printf.c**: int _printf(const char *format, ...)
 
 ## Current Conversion Specifiers
 | Specifier | Description |
