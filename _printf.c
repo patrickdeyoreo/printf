@@ -10,10 +10,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int (*print_func)(va_list);
 	va_list arguments;
-	int charCounter;
-	int last_ret_val;
+	int (*print_func)(va_list);
+	int charCounter, lastRetVal;
 
 	va_start(arguments, format);
 	for (charCounter = 0; *format; ++format)
@@ -23,15 +22,18 @@ int _printf(const char *format, ...)
 			print_func = get_print_func(format[1]);
 			if (print_func)
 			{
-				last_ret_val = print_func(arguments);
-				if (last_ret_val < 0)
-					return (last_ret_val);
-				charCounter += last_ret_val;
+				lastRetVal = print_func(arguments);
+				if (lastRetVal < 0)
+					return (-1);
+				charCounter += lastRetVal;
 				++format;
 				continue;
 			}
 		}
-		charCounter += _putchar(*format);
+		lastRetVal = _putchar(*format);
+		if (lastRetVal < 0)
+			return (-1);
+		charCounter += lastRetVal;
 	}
 	va_end(arguments);
 	return (charCounter);

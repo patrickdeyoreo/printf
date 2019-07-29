@@ -8,9 +8,20 @@
  */
 void _print_o(unsigned int n, int *count)
 {
+	int lastRetVal;
+
 	if (n > 07)
 		_print_o(n >> 3, count);
-	*count += _putchar('0' + (n & 07));
+
+	if (*count < 0)
+		return;
+
+	lastRetVal = _putchar('0' + (n & 07));
+
+	if (lastRetVal < 0)
+		*count = (-1);
+	else
+		*count += lastRetVal;
 }
 
 

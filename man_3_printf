@@ -1,0 +1,40 @@
+.TH _PRINTF 3 "27 July 2019" "Printf Man Page"
+.SH NAME
+.B _printf
+- formats and writes data to stdout
+.SH SYNOPSIS
+.B _printf
+.I FORMAT [ARGUMENT]
+.B ...
+.SH DESCRIPTION
+Writes output using the format string to stdout. The format string is composed
+of 0 or more directives and contains specifiers (identified by the prefix "%")
+that use the corresponding argument variables to print desired data.
+.SH RETURN VALUE
+On success, returns the number of characters printed to stdout (excluding the
+null byte term). On failure, returns -1.
+.SH SPECIFIERS
+List of characters that specify data to be printed
+.TP
+.B %c
+Unsigned character
+.TP
+.B %s
+String
+.TP
+.B %%
+Percentage character
+.SH EXAMPLE
+To print some text alongside a
+.I name
+string variable and
+.I age
+integer variable:
+_printf("Hello my name is %s and I am %i years old", name, age)
+.SH SEE ALSO
+.I printf(3)
+.SH BUGS
+No known bugs.
+Report bugs to ...
+.SH AUTHOR
+Patrick DeYoreo, Sudeep Raj

@@ -8,9 +8,20 @@
  */
 void _print_u(unsigned int n, int *count)
 {
+	int lastRetVal;
+
 	if (n > 9)
-		_print_i(n / 10, count);
-	*count += _putchar('0' + n % 10);
+		_print_u(n / 10, count);
+
+	if (*count < 0)
+		return;
+
+	lastRetVal = _putchar('0' + n % 10);
+
+	if (lastRetVal < 0)
+		*count = (-1);
+	else
+		*count += lastRetVal;
 }
 
 
