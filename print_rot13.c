@@ -8,22 +8,21 @@
  */
 int print_rot13(va_list args)
 {
-	int count = 0, i, j, bool;
-	char set[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char enc[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int count = 0, i;
 	char *s = va_arg(args, char *);
 
-	for (i = 0; s[i] != 0; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; set[j] != 0; j++)
-			if (s[i] == set[j])
-			{
-				count += _putchar(enc[j]);
-				bool = 0;
-			}
-		if (bool == 1)
+		if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		{
+			if ((s[i] >= 'n' && s[i] <= 'z') ||
+			    (s[i] >= 'N' && s[i] <= 'Z'))
+				count += _putchar(s[i] - 13);
+			else
+				count += _putchar(s[i] + 13);
+		}
+		else
 			count += _putchar(s[i]);
-		bool = 1;
 	}
 	return (count);
 }
