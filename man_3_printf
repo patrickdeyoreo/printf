@@ -53,9 +53,10 @@ encodes a character string in rot13 format
 .SH EXAMPLE
 To print some text alongside a
 .I name
-string variable and
+string variable and an
 .I age
 integer variable:
+.TP
 _printf("Hello my name is %s and I am %i years old", name, age)
 .SH SEE ALSO
 .I printf(3)
