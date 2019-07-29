@@ -5,7 +5,6 @@
  * @c: current specifier to compare
  *
  * Return: Number of characters printed
- *
  */
 int (*get_print_func(char c))(va_list)
 {
@@ -20,11 +19,10 @@ int (*get_print_func(char c))(va_list)
 		{'o', print_o},
 		{'x', print_x},
 		{'X', print_X},
-		{'\0', NULL}
+		{ 0, NULL}
 	};
-	int i;
+	unsigned int i = 0;
 
-	i = 0;
 	while (specs[i].specifier)
 	{
 		if (specs[i].specifier == c)
