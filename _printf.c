@@ -24,15 +24,15 @@ int _printf(const char *format, ...)
 			{
 				lastRetVal = print_func(arguments);
 				if (lastRetVal < 0)
-					return (lastRetVal);
+					return (-1);
 				charCounter += lastRetVal;
 				++format;
 				continue;
 			}
 		}
-		lastRetVal += _putchar(*format);
+		lastRetVal = _putchar(*format);
 		if (lastRetVal < 0)
-			return (lastRetVal);
+			return (-1);
 		charCounter += lastRetVal;
 	}
 	va_end(arguments);
