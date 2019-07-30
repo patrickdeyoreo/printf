@@ -9,14 +9,14 @@
 int print_S(va_list args)
 {
 	int count, lastRetVal;
-	unsigned char *str = va_arg(args, char *);
+	char *str = va_arg(args, char *);
 
 	if (!str)
-		return (_printf("(null)"));
+		str = "(null)";
 
 	for (count = 0; *str; ++str)
 	{
-		if (*str < 0x20 || 0x80 <= *str)
+		if (*str < 0x20 || 0x80 <= (unsigned char) *str)
 		{
 			lastRetVal = _printf("\\x");
 			if (lastRetVal < 0)
