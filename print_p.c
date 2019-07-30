@@ -2,16 +2,16 @@
 
 
 /**
- * _print_x - print an integer in hexadecimal (lowercase) (helper function)
+ * _print_p - print an adress in hexadecimal (lowercase) (helper function)
  * @n: the integer to print
  * @count: a pointer to a counter for the number of bytes printed
  */
-void _print_x(unsigned int n, int *count)
+void _print_p(unsigned long int n, int *count)
 {
 	int lastRetVal;
 
 	if (n > 0xf)
-		_print_x(n >> 4, count);
+		_print_p(n >> 4, count);
 
 	if (*count < 0)
 		return;
@@ -29,16 +29,26 @@ void _print_x(unsigned int n, int *count)
 
 
 /**
- * print_x - print an integer in hexadecimal (lowercase)
+ * print_p - print an address in hexadecimal (lowercase)
  * @args: the va_list with the integer to print as it's next element
  *
  * Return: the number of bytes printed
  */
-int print_x(va_list args)
+int print_p(va_list args)
 {
-	int count = 0;
+	int lastRetVal, count = 0;
 
-	_print_x(va_arg(args, int), &count);
+	lastRetVal = _putchar('0');
+	if (lastRetVal < 0)
+		return (-1);
+	count += lastRetVal;
+
+	lastRetVal = _putchar('x');
+	if (lastRetVal < 0)
+		return (-1);
+	count += lastRetVal;
+
+	_print_p((unsigned long int) va_arg(args, void *), &count);
 
 	return (count);
 }
