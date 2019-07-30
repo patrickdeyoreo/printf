@@ -31,7 +31,8 @@ int main(void)
 		NULL
 	};
 	int len, len2;
-	unsigned int uint = (unsigned int) INT_MAX + 1024;
+	unsigned int ui = (unsigned int) INT_MAX + 1024;
+	const void *ptr = (void *) 0x7ffe637541f0;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
@@ -56,21 +57,16 @@ int main(void)
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
 
-	_printf("Undefined w/ char   : [%Q]\n", 762534);
-	printf("Undefined w/ char   : [%Q]\n", 762534);
-	_printf("Undefined w/ char * : [%Q]\n", "Hello");
-	printf("Undefined w/ char * : [%Q]\n", "Hello");
+	_printf("Unsigned:[%u]\n", ui);
+	printf("Unsigned:[%u]\n", ui);
 
-	_printf("Unsigned:[%u]\n", uint);
-	printf("Unsigned:[%u]\n", uint);
+	_printf("Unsigned binary:[%b]\n", ui);
 
-	_printf("Unsigned binary:[%b]\n", uint);
+	_printf("Unsigned octal:[%o]\n", ui);
+	printf("Unsigned octal:[%o]\n", ui);
 
-	_printf("Unsigned octal:[%o]\n", uint);
-	printf("Unsigned octal:[%o]\n", uint);
-
-	_printf("Unsigned hexadecimal:[%x, %X]\n", uint, uint);
-	printf("Unsigned hexadecimal:[%x, %X]\n", uint, uint);
+	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
@@ -78,10 +74,8 @@ int main(void)
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 
-	/*
-	 * _printf("Address:[%p]\n", addr);
-	 * printf("Address:[%p]\n", addr);
-	 */
+	 _printf("Address:[%p]\n", ptr);
+	 printf("Address:[%p]\n", ptr);
 
 	len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
