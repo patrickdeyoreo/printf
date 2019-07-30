@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			if (!format[1])
-				continue;
+				return (-1);
 
 			print_func = get_print_func(format[1]);
 			if (print_func)
