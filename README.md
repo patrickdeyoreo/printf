@@ -30,6 +30,8 @@ stream. The function returns the number of characters printed.
 * **print_*.c**
 > A group of functions that take care of the relative specifier conversion
 
+![Coggle Diagram of Functions](https://i.imgur.com/ZVDhh8p.png)
+
 ## Compilation
 ```
 $ gcc -Wall -Werror -Wextra -pedantic *.c
