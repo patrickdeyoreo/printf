@@ -25,6 +25,7 @@ int main(void)
 {
 	const void *nil = NULL;
 	const char *str = "Yo, wattup?";
+	const char *nop = "\aThis \astring \acontains \abells!";
 	unsigned int ui = INT_MIN;
 	int ch = '#', i = INT_MIN;
 	int len, len2;
@@ -44,6 +45,7 @@ int main(void)
 		{"Address : %p\n", &nil},
 		{"Char ...: %c\n", &ch },
 		{"String .: %s\n", &str},
+		{"Quoted  : %S\n", &nop},
 		{"Reverse : %r\n", &str},
 		{"ROT13 ..: %R\n", &str},
 		{NULL}
