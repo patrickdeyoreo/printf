@@ -40,7 +40,7 @@ int print_p(va_list args)
 	void *p = va_arg(args, void *);
 
 	if (!p)
-		return _printf("(nil)");
+		return (_printf("(nil)"));
 
 	count = _printf("0x");
 	if (count < 0)
