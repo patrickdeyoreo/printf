@@ -19,6 +19,7 @@ int (*get_print_func(char c))(va_list)
 		{'o', print_o},
 		{'x', print_x},
 		{'X', print_X},
+		{'S', print_S},
 		{'p', print_p},
 		{'r', print_rev},
 		{'R', print_rot13},
