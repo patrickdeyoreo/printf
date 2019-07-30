@@ -13,7 +13,7 @@ int print_rot13(va_list args)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
 		{
 			if ((s[i] >= 'n' && s[i] <= 'z') ||
 			    (s[i] >= 'N' && s[i] <= 'Z'))
