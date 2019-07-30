@@ -11,7 +11,7 @@ of 0 or more directives and contains specifiers (identified by the prefix "%")
 that use the corresponding argument variables to print desired data.
 .SH RETURN VALUE
 On success, returns the number of characters printed to stdout (excluding the
-null byte term). On failure, returns -1 to imply no characters were printed.
+null byte term). On failure, returns -1.
 .SH SPECIFIERS
 List of characters that specify data to be printed
 .TP
