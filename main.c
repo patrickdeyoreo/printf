@@ -1,6 +1,20 @@
 #include <limits.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
+
+
+/**
+ * struct test - a test for printf
+ * @format: format string
+ * @args: args as bytes
+ */
+typedef struct test
+{
+	const char *format;
+	const char *args;
+} test_t;
+
 
 /**
  * main - Entry point
@@ -9,136 +23,54 @@
  */
 int main(void)
 {
-	int len;
-	int len2;
-	unsigned int ui = (unsigned int) INT_MAX + 1024;
+	char **test, *test_list[]  = {
+		"%",   "%%",   "%%%",
+		"%&",  "%%&",  "%%%&",
+		"&%",  "&%%",  "&%%%",
+		"&%&", "&%%&", "&%%%&",
+		NULL
+	};
+	int len, len2;
+	unsigned int uint = (unsigned int) INT_MAX + 1024;
 
-	len  = _printf("Let's try to printf a simple sentence.\n");
+	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
-
 	_printf("Length:[%d, %i]\n", len, len);
 	printf("Length:[%d, %i]\n", len2, len2);
 
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%");
-	printf("+ _printf()\n");
-	_printf("%");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%\\n");
-	printf("+ _printf()\n");
-	_printf("%\n");
-	printf("+ printf()\n");
-	printf("%\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%");
-	printf("+ _printf()\n");
-	_printf("%%%");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%\\n");
-	printf("+ _printf()\n");
-	_printf("%%%\n");
-	printf("+ printf()\n");
-	printf("%%%\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%%%");
-	printf("+ _printf()\n");
-	_printf("%%%%%");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%%%");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%%%\\n");
-	printf("+ _printf()\n");
-	_printf("%%%%%\n");
-	printf("+ printf()\n");
-	printf("%%%%%\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s");
-	printf("+ _printf()\n");
-	_printf("%%%s", "hello");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%s", "hello");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s\\n");
-	printf("+ _printf()\n");
-	_printf("%%%s\n", "hello");
-	printf("+ printf()\n");
-	printf("%%%s\n", "hello");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%");
-	printf("+ _printf()\n");
-	_printf("%%%s%", "hello");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%s%", "hello");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%\\n");
-	printf("+ _printf()\n");
-	_printf("%%%s%\n", "hello");
-	printf("+ printf()\n");
-	printf("%%%s%\n", "hello");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%%%");
-	printf("+ _printf()\n");
-	_printf("%%%s%%%", "hello");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%s%%%", "hello");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%%%\\n");
-	printf("+ _printf()\n");
-	_printf("%%%s%%%\n", "hello");
-	printf("+ printf()\n");
-	printf("%%%s%%%\n", "hello");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%s%%%");
-	printf("+ _printf()\n");
-	_printf("%%%s%s%%%", "hello", "world");
-	printf("\n");
-	printf("+ printf()\n");
-	printf("%%%s%s%%%", "hello", "world");
-	printf("\n");
-	printf("- - - - -\n");
-	printf(">> format: %s\n", "%%%s%s%%%\\n");
-	printf("+ _printf()\n");
-	_printf("%%%s%s%%%\n", "hello", "world");
-	printf("+ printf()\n");
-	printf("%%%s%s%%%\n", "hello", "world");
-	printf("- - - - -\n");
+	puts("---------+--");
+	for (test = test_list; *test; ++test)
+	{
+		printf("@ format : %s\n", *test);
+		_printf("> _printf: ");
+		len = _printf(*test);
+		puts("");
+		printf("> printf : ");
+		len2 = printf(*test);
+		puts("");
+		printf("+ _printf:%2d\n", len);
+		printf("+ printf :%2d\n", len2);
+		puts("---------+--");
+	}
 
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
 
-	_printf("Undefined int   :[%Q]\n", 762534);
-	printf("Undefined int   :[%Q]\n", 762534);
-	_printf("Undefined char  :[%Q]\n", 'A');
-	printf("Undefined char  :[%Q]\n", 'A');
-	_printf("Undefined string:[%Q]\n", "Hello");
-	printf("Undefined string:[%Q]\n", "Hello");
+	_printf("Undefined w/ char   : [%Q]\n", 762534);
+	printf("Undefined w/ char   : [%Q]\n", 762534);
+	_printf("Undefined w/ char * : [%Q]\n", "Hello");
+	printf("Undefined w/ char * : [%Q]\n", "Hello");
 
-	_printf("Unsigned:[%u]\n", ui);
-	printf("Unsigned:[%u]\n", ui);
+	_printf("Unsigned:[%u]\n", uint);
+	printf("Unsigned:[%u]\n", uint);
 
-	_printf("Unsigned binary:[%b]\n", ui);
+	_printf("Unsigned binary:[%b]\n", uint);
 
-	_printf("Unsigned octal:[%o]\n", ui);
-	printf("Unsigned octal:[%o]\n", ui);
+	_printf("Unsigned octal:[%o]\n", uint);
+	printf("Unsigned octal:[%o]\n", uint);
 
-	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	_printf("Unsigned hexadecimal:[%x, %X]\n", uint, uint);
+	printf("Unsigned hexadecimal:[%x, %X]\n", uint, uint);
 
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
@@ -151,7 +83,7 @@ int main(void)
 	 * printf("Address:[%p]\n", addr);
 	 */
 
-	len  = _printf("Percent:[%%]\n");
+	len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
 
 	_printf("Len:[%d]\n", len);
