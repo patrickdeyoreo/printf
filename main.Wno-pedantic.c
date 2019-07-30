@@ -23,7 +23,7 @@ typedef struct test
  */
 int main(void)
 {
-	const void *ptr = (void *) 0x7ffe637541f0;
+	const void *nil = NULL;
 	const char *str = "Yo, wattup?";
 	unsigned int ui = INT_MIN;
 	int ch = '#', i = INT_MIN;
@@ -40,7 +40,8 @@ int main(void)
 		{"Octal ..: %o\n", &ui },
 		{"Hex ....: %x\n", &ui },
 		{"Hex ....: %X\n", &ui },
-		{"Address : %p\n", &ptr},
+		{"Address : %p\n", str },
+		{"Address : %p\n", &nil},
 		{"Char ...: %c\n", &ch },
 		{"String .: %s\n", &str},
 		{"Reverse : %r\n", &str},
