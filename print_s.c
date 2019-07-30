@@ -9,7 +9,7 @@
 int print_s(va_list args)
 {
 	int count = 0;
-	char * s = va_arg(args, char *);
+	char *s = va_arg(args, char *);
 
 	if (!s)
 		s = "(null)";
