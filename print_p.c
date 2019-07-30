@@ -36,19 +36,17 @@ void _print_p(unsigned long int n, int *count)
  */
 int print_p(va_list args)
 {
-	int lastRetVal, count = 0;
+	int count;
+	void *p = va_arg(args, void *);
 
-	lastRetVal = _putchar('0');
-	if (lastRetVal < 0)
+	if (!p)
+		return _printf("(nil)");
+
+	count = _printf("0x");
+	if (count < 0)
 		return (-1);
-	count += lastRetVal;
 
-	lastRetVal = _putchar('x');
-	if (lastRetVal < 0)
-		return (-1);
-	count += lastRetVal;
-
-	_print_p((unsigned long int) va_arg(args, void *), &count);
+	_print_p((unsigned long int) p, &count);
 
 	return (count);
 }
