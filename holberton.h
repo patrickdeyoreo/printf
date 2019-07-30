@@ -43,6 +43,8 @@ void _print_x(unsigned int n, int *count);
 int print_X(va_list);
 void _print_X(unsigned int n, int *count);
 
+int print_S(va_list args);
+
 int print_p(va_list);
 void _print_p(unsigned long int n, int *count);
 
