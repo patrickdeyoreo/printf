@@ -6,7 +6,7 @@
  *
  * Return: Number of characters printed
  */
-int (*get_print_func(char c))(va_list)
+int (*get_print_func(char c))(t_buf *, va_list)
 {
 	t_print_func specs[] = {
 		{'c', print_c},

@@ -6,7 +6,7 @@
  *
  * Return: the number of bytes printed
  */
-int print_S(va_list args)
+int print_S(t_buf *buffer, va_list args)
 {
 	int count, lastRetVal;
 	char *str = va_arg(args, char *);
@@ -25,13 +25,13 @@ int print_S(va_list args)
 			if (lastRetVal < 0)
 				return (-1);
 
-			_print_X(*str, &count);
+			_print_X(buffer, *str, &count);
 			if (count < 0)
 				return (-1);
 		}
 		else
 		{
-			lastRetVal = _putchar(*str);
+			lastRetVal = bputchar(buffer, *str);
 			if (lastRetVal < 0)
 				return (-1);
 		}

@@ -6,34 +6,34 @@
  * @n: the integer to print
  * @count: a pointer to a counter for the number of bytes printed
  */
-void _print_i(int n, int *count)
+void _print_i(t_buf *buffer, int n, int *count)
 {
 	int lastRetVal;
 
 	if (n < 0)
 	{
-		*count = _putchar('-');
+		*count = bputchar(buffer, '-');
 
 		if (*count < 0)
 			return;
 
 		if (n < -9)
-			_print_i(n / -10, count);
+			_print_i(buffer, n / -10, count);
 
 		if (*count < 0)
 			return;
 
-		lastRetVal = _putchar('0' - n % 10);
+		lastRetVal = bputchar(buffer, '0' - n % 10);
 	}
 	else
 	{
 		if (n > 9)
-			_print_i(n / 10, count);
+			_print_i(buffer, n / 10, count);
 
 		if (*count < 0)
 			return;
 
-		lastRetVal = _putchar('0' + n % 10);
+		lastRetVal = bputchar(buffer, '0' + n % 10);
 	}
 
 	if (lastRetVal < 0)
@@ -49,11 +49,11 @@ void _print_i(int n, int *count)
  *
  * Return: the number of bytes printed
  */
-int print_i(va_list args)
+int print_i(t_buf *buffer, va_list args)
 {
 	int count = 0;
 
-	_print_i(va_arg(args, int), &count);
+	_print_i(buffer, va_arg(args, int), &count);
 
 	return (count);
 }

@@ -27,12 +27,12 @@ typedef struct buf
 typedef struct print_func
 {
 	char specifier;
-	int (*f)(va_list);
+	int (*f)(t_buf *, va_list);
 } t_print_func;
 
 int _printf(const char *format, ...);
 
-int (*get_print_func(char c))(va_list);
+int (*get_print_func(char c))(t_buf *, va_list);
 
 int print_c(t_buf *buffer, va_list);
 

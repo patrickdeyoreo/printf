@@ -6,7 +6,7 @@
  *
  * Return: the number of bytes printed
  */
-int print_c(va_list args)
+int print_c(t_buf *buffer, va_list args)
 {
-	return (_putchar(va_arg(args, int)));
+	return (bputchar(buffer, va_arg(args, int)));
 }

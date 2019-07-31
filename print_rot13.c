@@ -6,7 +6,7 @@
  *
  * Return: the number of bytes printed
  */
-int print_rot13(va_list args)
+int print_rot13(t_buf *buffer, va_list args)
 {
 	int count = 0, i;
 	char *s = va_arg(args, char *);
@@ -17,12 +17,12 @@ int print_rot13(va_list args)
 		{
 			if ((s[i] >= 'n' && s[i] <= 'z') ||
 			    (s[i] >= 'N' && s[i] <= 'Z'))
-				count += _putchar(s[i] - 13);
+				count += bputchar(buffer, s[i] - 13);
 			else
-				count += _putchar(s[i] + 13);
+				count += bputchar(buffer, s[i] + 13);
 		}
 		else
-			count += _putchar(s[i]);
+			count += bputchar(buffer, s[i]);
 	}
 	return (count);
 }

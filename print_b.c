@@ -6,17 +6,17 @@
  * @n: the integer to print
  * @count: a pointer to a counter for the number of bytes printed
  */
-void _print_b(unsigned int n, int *count)
+void _print_b(t_buf *buffer, unsigned int n, int *count)
 {
 	int lastRetVal;
 
 	if (n > 1)
-		_print_b(n >> 1, count);
+		_print_b(buffer, n >> 1, count);
 
 	if (*count < 0)
 		return;
 
-	lastRetVal = _putchar('0' + n % 2);
+	lastRetVal = bputchar(buffer, '0' + n % 2);
 
 	if (lastRetVal < 0)
 		*count = (-1);
@@ -31,11 +31,11 @@ void _print_b(unsigned int n, int *count)
  *
  * Return: the number of bytes printed
  */
-int print_b(va_list args)
+int print_b(t_buf *buffer, va_list args)
 {
 	int count = 0;
 
-	_print_b(va_arg(args, int), &count);
+	_print_b(buffer, va_arg(args, int), &count);
 
 	return (count);
 }
