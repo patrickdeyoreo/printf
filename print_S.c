@@ -12,11 +12,11 @@ int print_S(va_list args)
 	char *str = va_arg(args, char *);
 
 	if (!str)
-		str = "(null)";
+		return (0);
 
 	for (count = 0; *str; ++str)
 	{
-		if (*str < 0x20 || 0x80 <= (unsigned char) *str)
+		if (*str >> 7 || *str < 0x20)
 		{
 			lastRetVal = _printf("\\x");
 			if (lastRetVal < 0)
