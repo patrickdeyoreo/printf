@@ -9,21 +9,23 @@
 int print_S(va_list args)
 {
 	int count, lastRetVal;
-	char *str = va_arg(args, char *);
+	unsigned char *str = va_arg(args, unsigned char *);
 
 	if (!str)
 		return (0);
 
 	for (count = 0; *str; ++str)
 	{
-		if (*str >> 7 || *str < 0x20)
+		if (*str < 0x20 || 0x80 <= *str)
 		{
-			lastRetVal = _printf("\\x");
+			if (*str < 0x10)
+				lastRetVal = _printf("\\x0");
+			else
+				lastRetVal = _printf("\\x");
+
 			if (lastRetVal < 0)
 				return (-1);
 
-			if (*str < 0x10)
-				_putchar('0');
 			_print_X(*str, &count);
 			if (count < 0)
 				return (-1);
@@ -36,6 +38,5 @@ int print_S(va_list args)
 		}
 		count += lastRetVal;
 	}
-
 	return (count);
 }
