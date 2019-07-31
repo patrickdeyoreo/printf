@@ -11,13 +11,16 @@ int _printf(const char *format, ...)
 {
 	va_list arguments;
 	int (*print_func)(va_list);
-	int charCounter, lastRetVal;
+	int charCounter = 0;
+	int lastRetVal;
+	t_buf buffer;
 
 	if (!format)
 		return (-1);
 
+	binit(&buffer, 1024);
 	va_start(arguments, format);
-	for (charCounter = 0; *format; ++format)
+	while (*format)
 	{
 		if (*format == '%')
 		{
@@ -31,19 +34,19 @@ int _printf(const char *format, ...)
 				if (lastRetVal < 0)
 					return (-1);
 				charCounter += lastRetVal;
-				++format;
+				format += 2;
 				continue;
 			}
-			lastRetVal = _putchar(*format++);
-			if (lastRetVal < 0)
+			if (_putchar(*format++) < 0)
 				return (-1);
-			charCounter += lastRetVal;
+			++charCounter;
 		}
-		lastRetVal = _putchar(*format);
-		if (lastRetVal < 0)
+		if (_putchar(*format++) < 0)
 			return (-1);
-		charCounter += lastRetVal;
+		++charCounter;
 	}
 	va_end(arguments);
+	bfree(&buffer);
+
 	return (charCounter);
 }

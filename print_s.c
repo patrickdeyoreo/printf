@@ -6,7 +6,7 @@
  *
  * Return: the number of bytes printed
  */
-int print_s(va_list args)
+int print_s(t_buf *buffer, va_list args)
 {
 	int count = 0;
 	char *s = va_arg(args, char *);
@@ -14,7 +14,7 @@ int print_s(va_list args)
 	if (!s)
 		s = "(null)";
 	while (s[count])
-		_putchar(s[count++]);
+		bputchar(buffer, s[count++]);
 
 	return (count);
 }
