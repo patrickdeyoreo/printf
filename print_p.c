@@ -40,13 +40,12 @@ int print_p(t_buf *buffer, va_list args)
 	void *p = va_arg(args, void *);
 
 	if (!p)
-		return (_printf("(nil)"));
+		return (bwrite(buffer, "(nil)", 5));
 
-	count = _printf("0x");
+	count = bwrite(buffer, "0x", 2);
 	if (count < 0)
 		return (-1);
 
 	_print_p(buffer, (unsigned long int) p, &count);
-
 	return (count);
 }

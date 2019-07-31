@@ -18,11 +18,10 @@ int print_S(t_buf *buffer, va_list args)
 	{
 		if (*str < 0x20)
 		{
-			if (*str < 0x10)
-				lastRetVal = _printf("\\x0");
-			else
-				lastRetVal = _printf("\\x");
-			if (lastRetVal < 0)
+			if (bwrite(buffer, "\\x", 2) < 0)
+				return (-1);
+
+			if (*str < 0x10 && bputchar(buffer, '0') < 0)
 				return (-1);
 
 			_print_X(buffer, *str, &count);
