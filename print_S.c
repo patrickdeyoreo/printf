@@ -22,6 +22,8 @@ int print_S(va_list args)
 			if (lastRetVal < 0)
 				return (-1);
 
+			if (*str < 0x10)
+				_putchar('0');
 			_print_X(*str, &count);
 			if (count < 0)
 				return (-1);
