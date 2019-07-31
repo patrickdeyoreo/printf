@@ -19,8 +19,10 @@ stream. The function returns the number of characters printed.
 | %o | writes the octal form of an unsigned integer |
 | %x | writes the hexadecimal form of an unsigned integer (using conversion letters: abcdef) |
 | %X | writes the hexadecimal form of an unsigned integer (using conversion letters: ABCDEF) |
-| %r |  writes a character string in reverse order |
+| %r | writes a character string in reverse order |
 | %R | encodes a character string in rot13 format |
+| %p | writes the character sequence defining a pointer |
+| %S | writes non-printable characters in the format "\x(ASCII Code Value in UPPERCASE Hexadecimal)" |
 
 ## Functions
 * **get_print_func.c**
@@ -30,7 +32,7 @@ stream. The function returns the number of characters printed.
 * **print_*.c**
 > A group of functions that take care of the relative specifier conversion
 
-![Coggle Diagram of Functions](https://i.imgur.com/ZVDhh8p.png)
+![Coggle Diagram of Functions](https://i.imgur.com/jY73SWi.png)
 
 ## Compilation
 ```
