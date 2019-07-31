@@ -50,6 +50,12 @@ writes a character string in reverse order
 .TP
 .B %R
 encodes a character string in rot13 format
+.TP
+.B %p
+writes the character sequence defining a pointer
+.TP
+.B %S
+writes non-printable characters in the format: \x(ASCII Code Value in UPPERCASE Hexadecimal)
 .SH EXAMPLE
 To print some text alongside a
 .I name
